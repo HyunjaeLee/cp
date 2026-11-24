@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ACL: Expand and copy current file",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/.vscode/expand_and_copy.py",
+        "--expander",
+        "${workspaceFolder}/ac-library/expander.py",
+        "--lib",
+        "${workspaceFolder}/ac-library",
+        "--origname",
+        "${relativeFile}",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

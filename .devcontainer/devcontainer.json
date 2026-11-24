@@ -1,0 +1,40 @@
+{
+  "name": "linux-cp",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [27121],
+  "portsAttributes": {
+    "27121": {
+      "label": "Competitive Companion",
+      "requireLocalPort": true
+    }
+  },
+  "runArgs": [
+    "--ulimit=stack=1073741824:1073741824"
+  ],
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "CPLUS_INCLUDE_PATH": "${containerWorkspaceFolder}/ac-library"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "DivyanshuAgrawal.competitive-programming-helper",
+        "llvm-vs-code-extensions.vscode-clangd"
+      ],
+      "settings": {
+        "clangd.path": "/usr/bin/clangd",
+
+        "cph.language.cpp.Command": "g++",
+        "cph.language.cpp.Args": "-std=c++23 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wcast-qual -Wcast-align -Wvla -Wlogical-op -Wduplicated-cond -Wduplicated-branches -fsanitize=address,undefined -fno-sanitize-recover=undefined -g -Og -fno-omit-frame-pointer",
+
+        "cph.language.python.Command": "python",
+        "cph.general.timeOut": 10000,
+        
+        "cph.general.defaultLanguage": "cpp",
+        "cph.general.defaultLanguageTemplateFileLocation": "${containerWorkspaceFolder}/template.cpp"
+      }
+    }
+  }
+}
